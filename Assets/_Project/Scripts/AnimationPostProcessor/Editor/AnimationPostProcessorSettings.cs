@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class AnimationPostProcessorSettings : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[CreateAssetMenu(fileName = "AnimationPostProcessorSettings", menuName = "AnimationPostProcessor/Settings", order = 1)]
+public class AnimationPostProcessorSettings : ScriptableObject {
+    public bool enabled = true;
+    public Avatar referenceAvatar;
+    public GameObject refeernceFBX;
+    
+    public bool enableTranslationDoF = true;
+    public ModelImporterAnimationType animationType = ModelImporterAnimationType.Human;
+    public bool loopTime = true;
+    public bool renameClips = true;
+    public bool forceEditorApply = true;
+    public bool extractTextures = true;
 }
