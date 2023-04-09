@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   enabled: 1
-  referenceAvatar: {fileID: 0}
-  refeernceFBX: {fileID: 0}
+  referenceAvatar: {fileID: 9000000, guid: 6d04967b2403b0947a66ac519789eaaa, type: 3}
+  referenceFBX: {fileID: 919132149155446097, guid: 6d04967b2403b0947a66ac519789eaaa,
+    type: 3}
   enableTranslationDoF: 1
   animationType: 3
   loopTime: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimationPostProcessorSettings : ScriptableObject {
     public bool enabled = true;
     public Avatar referenceAvatar;
-    public GameObject refeernceFBX;
+    public GameObject referenceFBX;
     
     public bool enableTranslationDoF = true;
     public ModelImporterAnimationType animationType = ModelImporterAnimationType.Human;

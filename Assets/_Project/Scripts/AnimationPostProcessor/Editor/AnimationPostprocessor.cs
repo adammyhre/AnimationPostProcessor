@@ -168,7 +168,7 @@ public class AnimationPostprocessor : AssetPostprocessor {
             settings = AssetDatabase.LoadAssetAtPath<AnimationPostProcessorSettings>(path);
             
             referenceAvatar = settings.referenceAvatar;
-            referenceFBX = settings.refeernceFBX;
+            referenceFBX = settings.referenceFBX;
             referenceImporter = AssetImporter.GetAtPath(AssetDatabase.GetAssetPath(referenceFBX)) as ModelImporter;
         }
     }
