@@ -8,14 +8,18 @@ public class AnimationPostprocessor : AssetPostprocessor {
     static Avatar referenceAvatar;
     static GameObject referenceFBX;
     static ModelImporter referenceImporter;
+    static bool settingsLoaded = false;    
 
     void OnPreprocessModel() {
-
         LoadSettings();
-        if (!settings.enabled) return;
-        
+        if (!settingsLoaded || !settings.enabled) return;
+
+        // Check if asset is in the specified folder
         ModelImporter importer = assetImporter as ModelImporter;
+        if (!importer.assetPath.StartsWith(settings.targetFolder)) return;      
+        
         AssetDatabase.ImportAsset(importer.assetPath);
+        
 
         // Extract materials and textures
         if (settings.extractTextures) {
@@ -64,8 +68,12 @@ public class AnimationPostprocessor : AssetPostprocessor {
 
     void OnPreprocessAnimation() {
         LoadSettings();
-        if (!settings.enabled) return;
-        
+        if (!settingsLoaded || !settings.enabled) return;
+
+        // Check if asset is in the specified folder
+        ModelImporter importer = assetImporter as ModelImporter;
+        if (!importer.assetPath.StartsWith(settings.targetFolder)) return;
+
         ModelImporter modelImporter = CopyModelImporterSettings(assetImporter as ModelImporter);
         
         AssetDatabase.ImportAsset(modelImporter.assetPath, ImportAssetOptions.ForceUpdate);
@@ -170,6 +178,9 @@ public class AnimationPostprocessor : AssetPostprocessor {
             referenceAvatar = settings.referenceAvatar;
             referenceFBX = settings.referenceFBX;
             referenceImporter = AssetImporter.GetAtPath(AssetDatabase.GetAssetPath(referenceFBX)) as ModelImporter;
+            settingsLoaded = true;
+        } else {
+            settingsLoaded = false;
         }
     }
 }
