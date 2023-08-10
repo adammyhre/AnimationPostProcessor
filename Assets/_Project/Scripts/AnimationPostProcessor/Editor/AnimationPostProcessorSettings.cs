@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AnimationPostProcessorSettings", menuName = "AnimationPostProcessor/Settings", order = 1)]
 public class AnimationPostProcessorSettings : ScriptableObject {
     public bool enabled = true;
+    public string targetFolder = "Assets/_Project/Animations";
     public Avatar referenceAvatar;
     public GameObject referenceFBX;
     
